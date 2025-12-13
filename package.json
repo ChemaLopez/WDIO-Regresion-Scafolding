@@ -3,19 +3,29 @@
   "version": "0.1.0",
   "description": "Scaffold WDIO para ejecutar tests dentro de un contenedor Docker",
   "private": true,
+  "type": "module",
   "scripts": {
-    "test": "wdio run wdio.conf.js",
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && wdio run ./dist/wdio.conf.js",
+    "test:dev": "NODE_ENV=development npm run test",
+    "test:staging": "NODE_ENV=staging npm run test",
+    "test:prod": "NODE_ENV=production npm run test",
+    "lint": "eslint \"test/**/*.ts\" --ext .ts",
+    "lint:fix": "eslint \"test/**/*.ts\" --ext .ts --fix",
     "docker:build": "docker build -t wdio-regresion-scafolding .",
-    "docker:run": "docker run --rm wdio-regresion-scafolding npm test"
+    "docker:run": "docker run --rm wdio-regresion-scafolding npm test",
+    "wdio": "wdio run ./wdio.conf.ts"
   },
   "devDependencies": {
-    "@wdio/cli": "^8.25.0",
-    "@wdio/local-runner": "^8.25.0",
-    "@wdio/mocha-framework": "^8.25.0",
-    "@wdio/spec-reporter": "^8.25.0",
-    "@wdio/devtools-service": "^8.25.0",
-    "webdriverio": "^8.25.0",
-    "mocha": "^10.2.0",
-    "chai": "^4.3.7"
+    "@types/node": "^25.0.1",
+    "@wdio/cli": "^9.21.1",
+    "@wdio/globals": "^9.17.0",
+    "@wdio/local-runner": "^9.21.0",
+    "@wdio/mocha-framework": "^9.21.0",
+    "@wdio/spec-reporter": "^9.20.0",
+    "@wdio/visual-service": "^9.0.2",
+    "expect-webdriverio": "^5.5.0",
+    "wdio-html-nice-reporter": "^8.1.7",
+    "wdio-json-html-reporter": "^1.5.14"
   }
 }
