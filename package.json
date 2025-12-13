@@ -1,0 +1,21 @@
+{
+  "name": "wdio-regresion-scafolding",
+  "version": "0.1.0",
+  "description": "Scaffold WDIO para ejecutar tests dentro de un contenedor Docker",
+  "private": true,
+  "scripts": {
+    "test": "wdio run wdio.conf.js",
+    "docker:build": "docker build -t wdio-regresion-scafolding .",
+    "docker:run": "docker run --rm wdio-regresion-scafolding npm test"
+  },
+  "devDependencies": {
+    "@wdio/cli": "^8.25.0",
+    "@wdio/local-runner": "^8.25.0",
+    "@wdio/mocha-framework": "^8.25.0",
+    "@wdio/spec-reporter": "^8.25.0",
+    "@wdio/devtools-service": "^8.25.0",
+    "webdriverio": "^8.25.0",
+    "mocha": "^10.2.0",
+    "chai": "^4.3.7"
+  }
+}

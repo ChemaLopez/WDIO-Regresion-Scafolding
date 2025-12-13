@@ -1,0 +1,19 @@
+name: CI - Run WDIO in Docker
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: |
+          docker build -t wdio-regresion-scafolding .
+      - name: Run tests in container
+        run: |
+          docker run --rm wdio-regresion-scafolding npm test
