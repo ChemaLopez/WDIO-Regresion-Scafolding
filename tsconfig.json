@@ -1,19 +1,33 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "outDir": "./dist",
-    "resolveJsonModule": true,
-    "declaration": false,
-    "typeRoots": [],
-    "types": [
-"node", "@wdio/globals/types", "@wdio/mocha-framework",
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "ESNext",
+        "target": "es2022",
+        "lib": [
+            "es2022",
+            "dom"
+        ],
+        "types": [
+            "node",
+            "@wdio/globals/types",
+            "expect-webdriverio",
+            "@wdio/mocha-framework",
+            "@wdio/visual-service",
+            "@wdio/lighthouse-service",
+            "wdio-vscode-service"
+        ],
+        "skipLibCheck": true,
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": [
+        "test",
+        "wdio.conf.ts"
     ]
-  },
-  "include": ["./test/**/*.ts", "./wdio.conf.ts"]
 }
