@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # Servicio que ejecuta tus tests de WebdriverIO
+  wdio-tests:
+    build: .
+    # Monta el directorio de trabajo local en el contenedor para que puedas ver los resultados
+    volumes:
+      - .:/usr/src/app
+      # Opcional: Si necesitas el socket de Docker para debug, descomenta la siguiente línea
+      # - /var/run/docker.sock:/var/run/docker.sock
+
+    # Establece un entorno de ejecución gráfico sin interfaz visible (headless)
+    environment:
+      # Las variables de DISPLAY son cruciales para que Chrome pueda ejecutarse
+      - DISPLAY=:99.0
+      
+    # Comando para ejecutar tus tests
+    command: npm run wdio
+    
+    # Reiniciar la política
+    restart: "no"
