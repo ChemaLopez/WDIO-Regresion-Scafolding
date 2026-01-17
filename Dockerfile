@@ -1,8 +1,15 @@
-FROM selenium/standalone-chrome:134.0-20250323 
-# Cambia el navegador y versión según tus necesidades
+FROM --platform=linux/amd64 selenium/standalone-chrome:134.0-20250323
+
+USER root
+
+# Instalar Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+ && apt-get install -y nodejs
+
 WORKDIR /app
-ADD . /app
+COPY package*.json ./
+RUN npm ci
 
-RUN npm install
+COPY . .
 
-CMD npx test:docker
+CMD ["npm", "run", "test:docker"]
