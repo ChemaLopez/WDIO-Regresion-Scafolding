@@ -1,5 +1,9 @@
-# Usamos una imagen que ya incluye Node.js y Chromium preinstalado
-FROM mcr.microsoft.com/playwright/test:v1.45-focal
+# Usamos una imagen de Node.js que incluye las herramientas necesarias para ejecutar navegadores
+FROM node:20-bullseye
+
+# Instala Chromium (navegador ligero)
+RUN apt-get update && apt-get install -y chromium-browser \
+    && rm -rf /var/lib/apt/lists/*
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /usr/src/app
