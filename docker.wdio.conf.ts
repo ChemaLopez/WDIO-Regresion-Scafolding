@@ -2,6 +2,9 @@ import { config as baseConfig } from "./wdio.conf.ts";
 
 export const config: WebdriverIO.Config = {
     ...baseConfig,
+      hostname: 'localhost',
+  port: 4444,
+  path: '/wd/hub',
     maxInstances: 1,
     capabilities: [{
         browserName: 'chrome',
