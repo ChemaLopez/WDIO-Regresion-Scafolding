@@ -2,9 +2,8 @@ import { config as baseConfig } from "./wdio.conf.ts";
 
 export const config: WebdriverIO.Config = {
     ...baseConfig,
-
+    maxInstances: 1,
     capabilities: [{
-        maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
             args: [
