@@ -16,7 +16,7 @@ services:
       - DISPLAY=:99.0
       
     # Comando para ejecutar tus tests
-    command: npm run wdio
+    command: npm run test
     
     # Reiniciar la política
     restart: "no"

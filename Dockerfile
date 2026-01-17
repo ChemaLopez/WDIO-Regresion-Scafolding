@@ -1,23 +1,8 @@
-# Usamos una imagen de Node.js que incluye las herramientas necesarias para ejecutar navegadores
-FROM node:20-bullseye
+FROM selenium/standalone-chrome:134.0-20250323 
+# Cambia el navegador y versión según tus necesidades
+WORKDIR /app
+ADD . /app
 
-# Instala Chromium (navegador ligero)
-RUN apt-get update && apt-get install -y chromium-browser \
-    && rm -rf /var/lib/apt/lists/*
-
-# Establece el directorio de trabajo dentro del contenedor
-WORKDIR /usr/src/app
-
-# Copia los archivos de definición de dependencias
-COPY package*.json ./
-
-# Instala las dependencias de Node.js
 RUN npm install
 
-# Copia el resto de archivos
-COPY . .
-
-EXPOSE 8080
-
-# Comando por defecto al iniciar el contenedor (será sobrescrito por docker-compose)
-CMD ["npm", "run", "wdio"]
+CMD npx test:docker
