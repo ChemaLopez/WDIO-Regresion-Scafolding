@@ -11,7 +11,8 @@ export const config: WebdriverIO.Config = {
                 '--disable-infobars',
                 '--headless',
                 '--disable-gpu',
-                '--window-size=1440,735'
+                '--window-size=1440,735',
+                `--user-data-dir=${path.join(os.tmpdir(), `chrome-${process.pid}`)}`
             ],
         }
     }],
