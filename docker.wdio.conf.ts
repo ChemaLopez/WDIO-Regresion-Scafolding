@@ -16,7 +16,7 @@ export const config: WebdriverIO.Config = {
                 '--disable-gpu',
                 '--window-size=1440,735',
                 '--disable-dev-shm-usage',
-                '--incognito'
+                `--user-data-dir=/tmp/chrome-profile-${Date.now()}`
             ],
         }
     }],
