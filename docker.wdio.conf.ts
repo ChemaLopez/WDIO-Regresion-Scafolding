@@ -12,7 +12,8 @@ export const config: WebdriverIO.Config = {
                 '--headless',
                 '--disable-gpu',
                 '--window-size=1440,735',
-                `--user-data-dir=${path.join(os.tmpdir(), `chrome-${process.pid}`)}`
+                '--disable-dev-shm-usage',
+                '--incognito'
             ],
         }
     }],
