@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build Docker image
         run: |
-          docker build -t wdio-regresion-scafolding .
+          docker build -t wdio-test .
       - name: Run tests in container
         run: |
-          docker run --rm wdio-regresion-scafolding npm test
+          docker run --shm-size=2g --rm wdio-test npm run test:docker
