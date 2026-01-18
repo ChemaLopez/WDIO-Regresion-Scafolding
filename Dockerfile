@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y \
     chromium-driver \
     fonts-liberation \
     libnss3 \
-    # ... (demás librerías)
     && rm -rf /var/lib/apt/lists/*
 
 # Definimos las rutas para que WDIO no tenga que adivinar

@@ -14,8 +14,6 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t wdio-regresion-scafolding .
-      - name: Clean up existing Chrome processes
-        run: pkill -9 chrome || true
       - name: Run tests in container
         run: |
-          docker run --shm-size=2g --rm wdio-regresion-scafolding npm test
+          docker run --shm-size=2g --rm wdio-regresion-scafolding npm test:docker
