@@ -16,4 +16,4 @@ jobs:
           docker build -t wdio-regresion-scafolding .
       - name: Run tests in container
         run: |
-          docker run --shm-size=2g --rm wdio-regresion-scafolding npm test:docker
+          docker run --shm-size=2g --rm wdio-regresion-scafolding npm run test:docker
