@@ -4,6 +4,7 @@ export const config: WebdriverIO.Config = {
     ...baseConfig,
     maxInstances: 1,
     port: 4444,
+    services: [...(baseConfig.services || []),'chromedriver'],
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
