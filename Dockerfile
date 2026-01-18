@@ -1,20 +1,20 @@
-FROM node:20-bookworm-slim
+FROM --platform=linux/amd64 node:22-bookworm
 
-# Instalar Chromium Y su Driver correspondiente
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     chromium \
-    chromium-driver \
-    fonts-liberation \
-    libnss3 \
-    && rm -rf /var/lib/apt/lists/*
-
-# Definimos las rutas para que WDIO no tenga que adivinar
-ENV CHROME_BIN=/usr/bin/chromium
-ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
+    ca-certificates \
+    xvfb && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm ci
+
 COPY . .
-RUN chmod -R 777 /tmp
+
+ENV DISPLAY=:99
+ENV CHROMIUM_BIN=/usr/bin/chromium
+ENV PATH="/app/node_modules/.bin:$PATH"
+
 CMD ["npm", "run", "test:docker"]
