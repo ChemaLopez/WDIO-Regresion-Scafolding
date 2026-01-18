@@ -7,14 +7,14 @@ export const config: WebdriverIO.Config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
             args: [
-                '--no-sandbox',
-                '--disable-infobars',
                 '--headless',
-                '--disable-gpu',
-                '--window-size=1440,735',
+                '--no-sandbox',
                 '--disable-dev-shm-usage',
-                `--user-data-dir=/tmp/chrome-profile-${Date.now()}`
+                '--disable-gpu',
+                '--disable-software-rasterizer',
+                '--remote-debugging-port=9222',
             ],
+            binary: process.env.CHROME_BIN || '/usr/bin/chromium'
         }
     }],
 }
